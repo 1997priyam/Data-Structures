@@ -28,6 +28,45 @@ Node * insert(Node *root, int data){
     return root;
 }
 
+Node * deleteNode(Node *root, int data){
+    if(root == NULL){
+        cout<<"Not found";
+    }
+    else if(data < root->data){
+        root->leftPtr = deleteNode(root->leftPtr, data);
+    }
+    else if(data > root->data){
+        root->rightPtr = deleteNode(root->rightPtr, data);
+    }
+    else{
+        //Found the node with data
+        if(root->leftPtr && root->rightPtr){
+            Node *temp = findMin(root->rightPtr);
+            root->data = temp->data;
+            root->rightPtr = deleteNode(root->rightPtr, root->data);
+        }
+        else if(!root->leftPtr){
+            Node *temp = root;
+            root = root->rightPtr;
+            delete(temp);
+        }
+        else{
+            Node *temp = root;
+            root = root->leftPtr;
+            delete(temp);
+        }
+    }
+    return root;
+}
+
+Node * findMin(Node *root){
+    if(root == NULL) return;
+    while(root->leftPtr != NULL){
+        root = root->leftPtr;
+    }
+    return root;
+}
+
 int main(){
     Node *root = NULL;
     int x;
