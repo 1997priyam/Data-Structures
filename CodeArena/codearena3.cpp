@@ -58,7 +58,7 @@ void create_sieve(vector<int> &arr, vector<int> &ans, vector<int> &count, int ma
     }
 
     for(int i=1; i<max+1; i++){     // Creating the sieve here, Iterating upto max value and for each value checking its 
-        for(int j=i; j<max+1; j+=i){    // maximum possible multiples upto max and marking their count in ans.
+        for(int j=i; j<max+1; j+=i){    // maximum possible multiples upto max and marking their count in ans
             ans[i] += count[j];
         }
     }
