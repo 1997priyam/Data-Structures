@@ -19,6 +19,11 @@ Memory Limit: 256 MB
 Source Limit: 1024 KB
 """
 
+
+"""
+Generating all sub strings and adding in the dictionary. Then returning length of dictionary
+"""
+
 sub_dict = {}
 
 def get_output(s):
